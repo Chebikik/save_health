@@ -13,8 +13,6 @@ updatePillsDisplay();
 
 // Обробка натискання на кнопку "Отримати пораду"
 document.getElementById("btn_wishes").addEventListener('click', () => {
-    console.log("Button clicked");
-
     let healthTips = [
         "Пийте більше води 💧",
         "Робіть зарядку щоранку 🏋️",
@@ -29,28 +27,72 @@ document.getElementById("btn_wishes").addEventListener('click', () => {
     ];
     
     let index = Math.floor(Math.random() * healthTips.length);
-    
-    console.log("Номер елементу масиву:", index);
-    
     document.getElementById('p_wishes').innerText = healthTips[index];
 
     if (countOfPills > 0) {
         countOfPills--; // Віднімаємо одну пігулку
-        console.log("Залишилося пігулок:", countOfPills);
-        updatePillsDisplay(); // Оновлюємо відображення
-
+        updatePillsDisplay();
         if (countOfPills === 0) {
-            document.getElementById("btn_wishes").style.display = 'none'; // Ховаємо кнопку, якщо пігулок немає
+          //  document.getElementById("btn_wishes").disabled = 'true'; 
+            document.getElementById("btn_wishes").style.backgroundColor = 'gray';
         }
     }
 });
 
 // Обробка натискання на кнопку "Поповнити запас пігулок"
 document.getElementById("btn-buy-pills").addEventListener('click', () => {
-    console.log("btn-buy-pills clicked");
-    
-    countOfPills = maxPills; // Оновлюємо кількість пігулок до максимуму
-    updatePillsDisplay(); // Оновлюємо відображення
+    countOfPills = maxPills;
+    updatePillsDisplay();
+   // document.getElementById("btn_wishes").disabled = 'false';
+    document.getElementById("btn_wishes").style.backgroundColor = 'green';
+});
 
+const images = ["img/gallery/1.jpg", "img/gallery/2.jpg"]; 
+let currentIndex = 0;
+
+const galleryImage = document.getElementById("galleryImage");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+// Функція для зміни зображення
+function updateImage() {
+    galleryImage.src = images[currentIndex];
+}
+
+// Обробники подій для кнопок
+prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+    updateImage();
+});
+
+nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+    updateImage();
+});
+
+// Removed duplicate declarations of images, currentIndex, galleryImage, prevBtn, and nextBtn
+
+// Функція для зміни зображення з анімацією
+function updateImage() {
+    galleryImage.classList.add("hidden"); // Робимо зображення прозорим перед зміною
+    setTimeout(() => {
+        galleryImage.src = images[currentIndex];
+        galleryImage.classList.remove("hidden"); // Повертаємо зображення після зміни
+    }, 300);
+}
+
+// Обробники подій для кнопок
+prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+    updateImage();
+});
+
+nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+    updateImage();
+});
+
+// Встановлюємо перше зображення
+updateImage();
     document.getElementById("btn_wishes").style.display = 'inline-block'; // Повертаємо кнопку
 });
