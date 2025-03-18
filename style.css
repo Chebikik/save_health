@@ -133,3 +133,65 @@ h2 {
 .site-footer p:last-child {
     cursor: progress;
 }
+img{
+  width: 100px;
+}
+
+.gallery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.gallery .main-image {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-image {
+    width: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.arrow-image:hover {
+    transform: scale(1.1);
+}
+
+/* Покращена тінь для головного зображення */
+.gallery .main-image {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+/* Покращена тінь для кнопок */
+.arrow-image {
+    width: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Ефект підсвічування при наведенні */
+.arrow-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 8px rgba(0, 143, 57, 0.5);
+}
+
+/* Зміна тіні при кліку */
+.arrow-image:active {
+    box-shadow: 0px 2px 4px rgba(0, 143, 57, 0.8);
+}
