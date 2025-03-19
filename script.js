@@ -95,3 +95,52 @@ nextBtn.addEventListener("click", () => {
 // Встановлюємо перше зображення
 updateImage();
 document.getElementById("btn_wishes").style.display = 'inline-block'; // Повертаємо кнопку
+
+//вітамини джсон
+
+const arrayOfVitaminObjects = [
+
+{
+   "id": 1,
+   "title":"Вітамін С",
+   "photo":"",
+   "description":"",
+   "rating":"",
+   "useful":"",
+
+},
+
+{
+    "id": 2,
+    "title":"Омега Д3",
+   "photo":"",
+   "description":"",
+   "rating":"",
+   "useful":"",
+ 
+ },
+
+ {
+    "id": 3,
+    "title":"Вітамін В3",
+   "photo":"",
+   "description":"",
+   "rating":"",
+   "useful":"",
+ 
+ },
+
+]
+
+//Console.log(arrayOfVitaminObjects)
+
+arrayOfVitaminObjects.forEach((item) => {
+    console.log(item)
+
+    let divVitamin = document.createElement('div')
+    divVitamin.innerText = item.title
+
+
+
+    document.getElementById('p-vitamins').appendChild(divVitamin)
+})
