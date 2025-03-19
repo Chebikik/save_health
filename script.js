@@ -94,5 +94,4 @@ nextBtn.addEventListener("click", () => {
 
 // Встановлюємо перше зображення
 updateImage();
-    document.getElementById("btn_wishes").style.display = 'inline-block'; // Повертаємо кнопку
-});
+document.getElementById("btn_wishes").style.display = 'inline-block'; // Повертаємо кнопку
