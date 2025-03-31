@@ -139,7 +139,7 @@ arrayOfVitaminObjects.forEach((item) => {
 
     let divVitamin = document.createElement('div')
     divVitamin.innerText = item.title
-
+     divVitamin.classList.add('vitamin')
 
 
     document.getElementById('p-vitamins').appendChild(divVitamin)
