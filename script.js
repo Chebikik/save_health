@@ -103,44 +103,80 @@ const arrayOfVitaminObjects = [
 {
    "id": 1,
    "title":"Вітамін С",
-   "photo":"",
-   "description":"",
-   "rating":"",
-   "useful":"",
+   "photo":"img/vitamins/vitamin-c.png",
+   "description":"Кристалічний порошок білого або майже білого кольору чи безбарвні кристали",
+   "rating":"2",
+   "type":"",
 
 },
 
 {
     "id": 2,
     "title":"Омега Д3",
-   "photo":"",
-   "description":"",
-   "rating":"",
-   "useful":"",
+   "photo":"img/vitamins/vitamin.png",
+   "description":"поліненасичені жирні кислоти належать до родини",
+   "rating":"4",
+   "type":"",
  
  },
 
  {
     "id": 3,
-    "title":"Вітамін В3",
-   "photo":"",
-   "description":"",
-   "rating":"",
-   "useful":"",
+    "title":"Вітамін В",
+   "photo":"img/vitamins/vitamins.png",
+   "description":"Вітаміни групи B, «вітаміни B», «В-комплекс» та ін. — вітаміни, розчинні у воді",
+   "rating":"3",
+   "type":"",
  
  },
 
 ]
 
-//Console.log(arrayOfVitaminObjects)
+console.log(arrayOfVitaminObjects);
 
 arrayOfVitaminObjects.forEach((item) => {
-    console.log(item)
+    console.log(item);
 
-    let divVitamin = document.createElement('div')
-    divVitamin.innerText = item.title
-     divVitamin.classList.add('vitamin')
+   
+    let divVitamin = document.createElement('div');
+    divVitamin.classList.add('vitamin');
 
+  
+    let ratingEmojis = '💚'.repeat(item.rating) + '🤍'.repeat(5 - item.rating);
 
-    document.getElementById('p-vitamins').appendChild(divVitamin)
-})
+    
+    divVitamin.innerHTML = `
+        <img src="${item.photo}" alt="${item.title}" class="vitamin-photo">
+        <p class="vitamin-title">${item.title}</p>
+        <p class="vitamin-rating">${ratingEmojis}</p>
+    `;
+
+    
+    divVitamin.addEventListener('mouseover', () => {
+        divVitamin.querySelector('.vitamin-photo').style.opacity = '0'; 
+        divVitamin.querySelector('.vitamin-title').style.opacity = '0'; 
+        divVitamin.querySelector('.vitamin-rating').style.opacity = '0'; 
+        setTimeout(() => {
+            divVitamin.querySelector('.vitamin-title').innerText = item.description; 
+            divVitamin.querySelector('.vitamin-photo').style.display = 'none'; 
+            divVitamin.querySelector('.vitamin-rating').style.display = 'none'; 
+            divVitamin.querySelector('.vitamin-title').style.opacity = '1'; 
+        }, 150); 
+    });
+
+    
+    divVitamin.addEventListener('mouseout', () => {
+        divVitamin.querySelector('.vitamin-title').style.opacity = '0'; 
+        setTimeout(() => {
+            divVitamin.querySelector('.vitamin-title').innerText = item.title; 
+            divVitamin.querySelector('.vitamin-photo').style.display = 'block'; 
+            divVitamin.querySelector('.vitamin-rating').style.display = 'block'; 
+            divVitamin.querySelector('.vitamin-photo').style.opacity = '1'; 
+            divVitamin.querySelector('.vitamin-title').style.opacity = '1'; 
+            divVitamin.querySelector('.vitamin-rating').style.opacity = '1'; 
+        }, 150); 
+    });
+
+    
+    document.getElementById('p_vitamins').appendChild(divVitamin);
+});
