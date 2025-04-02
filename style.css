@@ -45,7 +45,7 @@ h2 {
 }
 
 .container {
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     background: #f0fff4;
     padding: 20px;
@@ -240,3 +240,14 @@ img{
     margin-bottom: 10px;
     transition: opacity 0.3s ease-in-out;
   }
+  .vitamin div {
+    margin-top:auto ;
+   width: 100%;
+  }
+
+  .vitamin div>p:first-child {
+   text-align: center;
+  }
+
+  
+  
